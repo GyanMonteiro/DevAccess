@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: var(--body-color);
+}
+.container{
+    display: flex;
+}
+
+.section-tarefas{
+    display: flex;
+    flex-direction: column;
+    background: #27242C;
+    margin-top: 40px;
+    margin-left: 4%;
+    width: 53vw;
+    height: 22vh;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    
+}
+.section-tarefas h1{
+    margin-top: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: #fff;
+}
+.section-tarefas h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3vw;
+    color: #0F8;
+}
+.section-tarefas h3{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #fff;
+}
+.tarefas{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+}
+.section-projetos{
+    display: flex;
+    flex-direction: column;
+    width: 53vw;
+    height: 28.7vw;
+    margin-top: 40px;
+    margin-left: 4%;
+    background: #27242C;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+
+}
+.section-projetos h1{
+    margin-top: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: #fff;
+}
+.projeto{
+    display: flex;
+    gap: 15%;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0F8;
+    border-radius: 5px;
+    width: 90%;
+    position: relative;
+    left: 5%;
+    height: 50px;
+}
+.projeto h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.3vw;
+    color: #2B134B;
+}
+.notificacoes{
+    margin-top: 2.8%;
+    margin-left: 5%;
+    width: 20vw;
+    height: 88vh;
+    background: #27242C;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+.notificacoes h1 {
+    margin: 5%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: #fff;
+}
+.nova-notificacao{
+    display: flex;
+    border: 2px #0F8 solid;
+    width: 90%;
+    border-radius: 7px;
+}
+.nova-notificacao h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #fff;
+}
+.nova-notificacao img{
+    width: 2vw;
+    margin-left: 5%;
+}
+.info-user{
+    display: block;
+}
+.info-user h2{
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+.info-user h3{
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1vw;
+}
+
+thead{
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+thead th{
+    border-bottom: 1px solid #fff;
+}
+tbody::before {
+    content: "";
+    display: table-row;
+    height: 20px;
+  }
+tbody tr {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.3vw;
+    color: #2B134B;
+    background: #0F8;
+    height: 50px;
+    border-radius: 5%;
+    padding: 10px 0;
+}
+tbody td:first-child{
+    border-radius: 5px 0 0 5px;
+}
+tbody td:last-child{
+    border-radius: 0 5px 5px 0;
+}
+table{
+    margin-top: 3%;
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 20px;
+}
+
+.close-section{
+    width: 65vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root{
+    --body-color: #181719;
+    --sidebar-color: #27242C;
+    --hover-color:#3D3A41;
+    --primary-color: #00FF88;
+    --toggle-color: #ddd;
+    --text-color:#d8dbd3;
+}
+
+.sidebar{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 20vw;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: all 0.4s ease;
+}
+.sidebar .image{
+    min-width: 5vw;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.sidebar header{
+    position: relative;
+}
+.sidebar .text{
+    font-size: 1.2vw;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+.sidebar.close{
+    width: 7vw;  
+}
+.sidebar.close .section-projetos{
+    width: 53vw;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+.sidebar.close .div-botao{
+    left: 45%;
+}
+.sidebar.close .nav-link a img{
+    transform: translateX(1.2vw);
+}
+.sidebar.close .logout a img{
+    transform: translateX(1vw);
+}
+.sidebar li{
+    padding: 5px 0;
+    height: 3vw;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.sidebar li a{
+    width: 100%;
+    height: 3.5vw;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+    
+}
+.sidebar li a:hover .nav-text {
+    color: var(--sidebar-color);
+}
+.sidebar .nav-link a:hover img {
+    filter: invert(100%);
+}
+.sidebar li a img{
+    width: 5vw;
+    height: 5vh;
+}
+
+.sidebar .image-text img{
+    width: 6vw;
+}
+
+.sidebar header .image-text{
+    margin-top: 2vw;
+    display: flex;
+    align-items: center;
+}
+.sidebar header .div-botao{
+    position: absolute;
+    top: 30%;
+    left: 85%;
+    transform: translateX(100%);
+}
+
+header .image-text .header-text{
+    display: flex;
+    flex-direction: column;
+}
+.header-text .name{
+    font-weight: 600;
+    color: var(--text-color);
+}
+.header-text .profession{
+    margin-top: -2px;
+}
+
+.div-botao{
+    display: flex;
+    justify-content: end; 
+}
+.div-botao button{
+    width: 2.5vw;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+.div-botao button img{
+    width: 90%;
+    height: 90%;
+    margin: 0;
+    padding: 0;
+}
+.sidebar .menu-bar{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-links li{
+    margin-bottom: 15px;
+}
+.menu-bar{
+    margin-top: 5vw;
+}
