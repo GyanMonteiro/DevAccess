@@ -62,16 +62,16 @@
             <div class="card-login">
                 <h1>LOGIN</h1>
                 <form action="" method="post">
-                    <span><?php echo $mensagem;?></span>
+                    <span class="mensagem"><?php echo $mensagem;?></span>
                     <div class="textfield">
                     <label for="usuario">Usuário</label>
                     <input type="text" name="usuario" id="usuario" placeholder="Usuário">
-                    <span><?php echo $mensagemUsuario;?></span>
+                    <span class="mensagem"><?php echo $mensagemUsuario;?></span>
                 </div>
                 <div class="textfield">
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" id="senha" placeholder="Senha">
-                    <span><?php echo $mensagemSenha;?></span>
+                    <span class="mensagem"><?php echo $mensagemSenha;?></span>
                 </div>
                 <input type="submit" value="login" class="btn">
                 <input type="submit" value="registre-se" class="btn regist" formaction="cadastro.php">
