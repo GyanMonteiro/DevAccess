@@ -4,6 +4,7 @@ include("conexao.php");
 
 $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
 $usuario = mysqli_real_escape_string($conexao, trim($_POST['usuario']));
+$profissao = mysqli_real_escape_string($conexao, trim($_POST['profissao_selecionada']));
 $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
 $senha = mysqli_real_escape_string($conexao, trim($_POST['senha']));
 
@@ -29,7 +30,7 @@ if ($row['total'] > 0) {
     exit;
 }
 
-$sql = "INSERT INTO usuarios (nome, usuario, email, senha) VALUES ('$nome', '$usuario', '$email', '$hash')";
+$sql = "INSERT INTO usuarios (nome, usuario, profissao, email, senha) VALUES ('$nome', '$usuario', '$profissao', '$email', '$hash')";
 
 if ($conexao->query($sql) === TRUE) {
     $_SESSION['status_cadastro'] = true;

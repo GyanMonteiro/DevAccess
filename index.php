@@ -31,6 +31,7 @@
 
                     $_SESSION['id'] = $usuarios['id'];
                     $_SESSION['nome'] = $usuarios['nome'];
+                    $_SESSION['profissao'] = $usuarios['profissao'];
 
                     header("Location: main.php");
                 } else {

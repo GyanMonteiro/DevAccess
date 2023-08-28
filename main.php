@@ -22,7 +22,7 @@ if(!isset($_SESSION)){
 
                 <div class="text header-text">
                     <span class="name"><?php echo $_SESSION['nome']; ?></span>
-                    <span class="profession">Desenvolvedor Front-end</span>
+                    <span class="profession"><?php echo $_SESSION['profissao']; ?></span>
                 </div>
             </div>
             <div class="div-botao">

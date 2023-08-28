@@ -26,7 +26,7 @@
                     <span class="mensagem" id="mensagem-usuario"></span>
                 </div>
                 <div class="textfield">
-                    <label for="nome">Sua profissão</label>
+                    <label for="profissao">Sua profissão</label>
                     <div class="dropdown">
                         <div class="select">
                             <span class="selected">Profissao</span>
@@ -38,6 +38,7 @@
                             <li>UX Designer</li>
                         </ul>
                     </div>
+                    <input type="hidden" name="profissao_selecionada" id="profissaoSelecionada" value="">
                 </div>
                 <div class="textfield">
                     <label for="email">Email</label>
@@ -88,6 +89,8 @@
                                     });
                                     
                                     option.classList.add('active');
+
+                                    document.getElementById('profissaoSelecionada').value = option.innerText;
                                 });
                             });
                         });
