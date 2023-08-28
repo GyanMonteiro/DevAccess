@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-main.css">
+    <link rel="stylesheet" href="src/styles/style-main.css">
     <title>Document</title>
 </head>
 <body>
@@ -34,19 +34,19 @@ if(!isset($_SESSION)){
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#"><img src="home.svg" alt="">
+                        <a href="#"><img src="src/img/home.svg" alt="">
                             <span class="text nav-text">Início</span></a>
                     </li>
                     <li class="nav-link">
-                        <a href="#"><img src="user-outline.svg" alt="">
+                        <a href="#"><img src="src/img/user-outline.svg" alt="">
                             <span class="text nav-text">Perfil</span></a>
                     </li>
                     <li class="nav-link">
-                        <a href="#"><img src="task.svg" alt="">
+                        <a href="#"><img src="src/img/task.svg" alt="">
                             <span class="text nav-text">Tarefas</span></a>
                     </li>
                     <li class="nav-link">
-                        <a href="#"><img src="setting-2.svg" alt="">
+                        <a href="#"><img src="src/img/setting-2.svg" alt="">
                             <span class="text nav-text">Configurações</span></a>
                     </li>
                 </ul>
@@ -54,7 +54,7 @@ if(!isset($_SESSION)){
 
             <div class="button-content">
                 <li class="logout">
-                    <a href="#"><img src="logout.svg" alt="">
+                    <a href="#"><img src="src/img/logout.svg" alt="">
                         <span class="text nav-text">Sair</span></a>
                 </li>
             </div>

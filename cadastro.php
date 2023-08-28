@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/style.css">
     <title>Document</title>
 </head>
 <body>
     <div class="main-div">
         <div class="left-login">
             <h1>Faça o registro<br>E decole conosco</h1>
-            <img src="astronauta2.svg" class="left-login-img" alt="">
+            <img src="src/img/astronauta2.svg" class="left-login-img" alt="">
         </div>
         <div class="right-login">
             <div class="card-login">
                 <h1>REGISTRO</h1>
-                <form action="cadastrar.php" method="post">
+                <form action="src/config-php/cadastrar.php" method="post">
                 <div class="textfield">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" placeholder="Nome Completo">

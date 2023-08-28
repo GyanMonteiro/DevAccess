@@ -50,14 +50,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/style.css">
     <title>Document</title>
 </head>
 <body>
     <div class="main-div">
         <div class="left-login">
             <h1>Faça login<br>E entre para o nosso time</h1>
-            <img src="astronauta.svg" class="left-login-img" alt="">
+            <img src="src/img/astronauta.svg" class="left-login-img" alt="">
         </div>
         <div class="right-login">
             <div class="card-login">
