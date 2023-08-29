@@ -116,6 +116,7 @@ body{
     border: 2px #0F8 solid;
     width: 90%;
     border-radius: 7px;
+    margin-bottom: 10px;
 }
 .nova-notificacao h1{
     font-family: 'Poppins', sans-serif;
@@ -170,14 +171,20 @@ table{
     margin-top: 3%;
     width: 90%;
     border-spacing: 0 20px;
+    text-align: center;
 }
 
 .close-section{
     width: 65vw;
 }
 
-
-
+.info-notificacao{
+    width: 70%;
+}
+.info-notificacao span{
+    color: #fff;
+    font-weight: 300;
+}
 
 
 

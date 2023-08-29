@@ -75,7 +75,14 @@ if (!isset($_SESSION)) {
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
-    $sql_query = $stmt->get_result();
+    $resultadoProjetos = $stmt->get_result();
+
+    $sql_code = "SELECT * FROM notificacoes WHERE usuario = ?";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $resultadoNotificacoes = $stmt->get_result();
 
     $stmt->close();
     $conexao->close();
@@ -170,7 +177,7 @@ if (!isset($_SESSION)) {
                     </thead>
                     <tbody>
                         <?php 
-                            while($dados_projetos = mysqli_fetch_assoc($sql_query))
+                            while($dados_projetos = mysqli_fetch_assoc($resultadoProjetos))
                             {
                                 echo "<tr>";
                                 echo "<td>".$dados_projetos['nome_projeto']."</td>";
@@ -186,10 +193,18 @@ if (!isset($_SESSION)) {
         </div>
         <div class="notificacoes">
             <h1>Notificações</h1>
-            <div class="nova-notificacao">
-                <img src="src/img/notification-bing.svg" alt="">
-                <h1>Nova tarefa</h1>
-            </div>
+            <?php 
+                while($dados_notificacoes = mysqli_fetch_assoc($resultadoNotificacoes))
+                {
+                    echo "<div class='nova-notificacao'>";
+                    echo "<img src='src/img/notification-bing.svg' alt=''>";
+                    echo "<div class='info-notificacao'>";
+                    echo "<h1>".$dados_notificacoes['remetente']."</h1>";
+                    echo "<span>".$dados_notificacoes['mensagem']."</span>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            ?>
         </div>
     </section>
 </body>
