@@ -69,6 +69,14 @@ if (!isset($_SESSION)) {
     } else {
         die("Falha na execução da consulta.");
     }
+
+    $sql_code = "SELECT * FROM projetos WHERE usuario = ?";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $sql_query = $stmt->get_result();
+
     $stmt->close();
     $conexao->close();
 }
@@ -92,7 +100,7 @@ if (!isset($_SESSION)) {
                 </span>
 
                 <div class="text header-text">
-                    <span class="name"><?php echo $_SESSION['usuario'];?></span>
+                    <span class="name"><?php echo $_SESSION['nome'];?></span>
                     <span class="profession"><?php echo $_SESSION['profissao']; ?></span>
                 </div>
             </div>
@@ -161,12 +169,17 @@ if (!isset($_SESSION)) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Página web</td>
-                            <td>SNKRS</td>
-                            <td>Status</td>
-                            <td>12/12</td>
-                        </tr>
+                        <?php 
+                            while($dados_projetos = mysqli_fetch_assoc($sql_query))
+                            {
+                                echo "<tr>";
+                                echo "<td>".$dados_projetos['nome_projeto']."</td>";
+                                echo "<td>".$dados_projetos['nome_empresa']."</td>";
+                                echo "<td>".$dados_projetos['status']."</td>";
+                                echo "<td>".$dados_projetos['data_conclusao']."</td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -174,7 +187,7 @@ if (!isset($_SESSION)) {
         <div class="notificacoes">
             <h1>Notificações</h1>
             <div class="nova-notificacao">
-                <img src="notification-bing.svg" alt="">
+                <img src="src/img/notification-bing.svg" alt="">
                 <h1>Nova tarefa</h1>
             </div>
         </div>
