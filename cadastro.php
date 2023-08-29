@@ -62,8 +62,6 @@
                         }if(urlParams.has('email_existe')) {
                             document.getElementById('mensagem-email').textContent = 'Email inválido';
                         }
-    </script>
-    <script>
                         const dropdowns = document.querySelectorAll('.dropdown');
 
                         dropdowns.forEach(dropdown => {

@@ -112,7 +112,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
             <div class="div-botao">
-                <button id="bttn"><img src="src/img/close-square.svg" alt=""></button>
+                <button id="btn"><img src="src/img/close-square.svg" alt=""></button>
             </div>
         </header>
 
@@ -197,7 +197,7 @@ if (!isset($_SESSION)) {
                 while($dados_notificacoes = mysqli_fetch_assoc($resultadoNotificacoes))
                 {
                     echo "<div class='nova-notificacao'>";
-                    echo "<img src='src/img/notification-bing.svg' alt=''>";
+                    echo "<img src='src/img/notification.svg' alt=''>";
                     echo "<div class='info-notificacao'>";
                     echo "<h1>".$dados_notificacoes['remetente']."</h1>";
                     echo "<span>".$dados_notificacoes['mensagem']."</span>";
@@ -206,18 +206,39 @@ if (!isset($_SESSION)) {
                 }
             ?>
         </div>
+        <button class="btn-chat" id="btn-chat">
+            <img class="chat-img" src="src/img/message.svg" alt="">
+        </button>
+            <div class="menssagem menssagem-close" id="menssagem">
+                <h1>Menssagem</h1>
+                <form action="enviar-mensagem.php" method="post">
+                    <div class="textfield">
+                        <input type="text" name="to-usuario" id="usuario" placeholder="Usuário">
+                    </div>
+                    <div class="textfield">
+                        <input class="menssagem-input" type="text" name="menssagem" id="menssagem" placeholder="Menssagem">
+                    </div>
+                    <input type="submit" name="registrar" value="enviar" class="btn">
+                </form>
+            </div>
     </section>
 </body>
 <script language='javascript'>
   const sideBar = document.getElementById('sidebar');
-  const bttn = document.getElementById('bttn');
+  const btnMenu = document.getElementById('btn');
+  const btnChat = document.getElementById('btn-chat');
+  const menssagem = document.getElementById('menssagem');
   const sectionTarefas = document.getElementById('section-tarefas');
   const sectionProjetos = document.getElementById('section-projetos');
   
-  bttn.addEventListener('click', () => {
+  btnMenu.addEventListener('click', () => {
       sideBar.classList.toggle('close');
       sectionTarefas.classList.toggle("close-section");
       sectionProjetos.classList.toggle("close-section");
+  })
+
+  btnChat.addEventListener('click', () => {
+      menssagem.classList.toggle('menssagem-close');
   })
 </script>
 </html>

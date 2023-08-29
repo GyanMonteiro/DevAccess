@@ -24,7 +24,7 @@ body{
     text-align: center;
     border-radius: 10px;
     transition: all 0.4s ease;
-    
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .section-tarefas h1{
     margin-top: 2%;
@@ -62,7 +62,7 @@ body{
     text-align: center;
     border-radius: 10px;
     transition: all 0.4s ease;
-
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .section-projetos h1{
     margin-top: 2%;
@@ -103,6 +103,7 @@ body{
     align-items: center;
     border-radius: 10px;
     transition: all 0.4s ease;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .notificacoes h1 {
     margin: 5%;
@@ -213,6 +214,7 @@ table{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: all 0.4s ease;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .sidebar .image{
     min-width: 5vw;
@@ -337,4 +339,106 @@ header .image-text .header-text{
 }
 .menu-bar{
     margin-top: 5vw;
+}
+.btn-chat{
+    background-color: #01eb7e;
+    display: flex;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    left: 92vw;
+    top: 40vw;
+    border: none;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+.button-chat:hover{
+    background: #00ff88;
+}
+.chat-img {
+    width: 3vw;
+}
+.menssagem{
+    position: absolute;
+    background: #27242C;
+    display: flex;
+    flex-direction: column;
+    left: 70vw;
+    top: 20.35vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -5px 10px 10px rgba(0, 0, 0, 0.25);
+    padding: 20px 10px;
+    border-radius: 10px 10px 0px 0px;
+    transition: all 0.4s ease;
+    
+}
+.menssagem-close{
+    display: none;
+}
+.menssagem h1{
+    margin-top: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5vw;
+    color: #fff;
+}
+
+.textfield{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+.textfield > input{
+    width: 90%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 46px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+.textfield > input::placeholder{
+    color: #f0ffffde;
+}
+
+.textfield > label{
+    color: #f0ffffde;
+    margin-bottom: 10px;
+}
+.menssagem-input{
+    padding: 30px 10px;
+    height: 10vw;
+}
+
+.btn{
+    width: 90%;
+    padding: 16px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #01eb7e;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+.btn:hover{
+    background: #00ff88;
 }
