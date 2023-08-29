@@ -1,8 +1,79 @@
 <?php 
-if(!isset($_SESSION)){
+include("conexao.php");
+
+if (!isset($_SESSION)) {
     session_start();
+
+    // Certifique-se de incluir o código de conexão com o banco de dados aqui
+    // $conexao = new mysqli("nome_do_host", "nome_de_usuario", "senha", "nome_do_banco");
+    
+    // Verifica se a conexão foi bem sucedida
+    if ($conexao->connect_error) {
+        die("Conexão falhou: " . $conexao->connect_error);
+    }
+
+    // Utiliza declarações preparadas para evitar injeção de SQL
+    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Aberto'";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $sql_query = $stmt->get_result();
+    
+    if ($sql_query) {
+        // Obtém o número total de linhas encontradas
+        $num_linhas_aberta = $sql_query->num_rows;
+        
+        // Processa o resultado da consulta
+        while ($row = $sql_query->fetch_assoc()) {
+            // Faça algo com cada linha de dados
+        }
+    } else {
+        die("Falha na execução da consulta.");
+    }
+
+    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Concluido'";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $sql_query = $stmt->get_result();
+    
+    if ($sql_query) {
+        // Obtém o número total de linhas encontradas
+        $num_linhas_concluido = $sql_query->num_rows;
+        
+        // Processa o resultado da consulta
+        while ($row = $sql_query->fetch_assoc()) {
+            // Faça algo com cada linha de dados
+        }
+    } else {
+        die("Falha na execução da consulta.");
+    }
+    
+    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Refazer'";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $sql_query = $stmt->get_result();
+    
+    if ($sql_query) {
+        // Obtém o número total de linhas encontradas
+        $num_linhas_refazer = $sql_query->num_rows;
+        
+        // Processa o resultado da consulta
+        while ($row = $sql_query->fetch_assoc()) {
+            // Faça algo com cada linha de dados
+        }
+    } else {
+        die("Falha na execução da consulta.");
+    }
+    $stmt->close();
+    $conexao->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +88,16 @@ if(!isset($_SESSION)){
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="user-bold.svg" alt="">
+                    <img src="src/img/user-bold.svg" alt="">
                 </span>
 
                 <div class="text header-text">
-                    <span class="name"><?php echo $_SESSION['nome']; ?></span>
+                    <span class="name"><?php echo $_SESSION['usuario'];?></span>
                     <span class="profession"><?php echo $_SESSION['profissao']; ?></span>
                 </div>
             </div>
             <div class="div-botao">
-                <button id="bttn"><img src="close-square.svg" alt=""></button>
+                <button id="bttn"><img src="src/img/close-square.svg" alt=""></button>
             </div>
         </header>
 
@@ -65,16 +136,16 @@ if(!isset($_SESSION)){
                 <h1>Tarefas semanais</h1>
                 <div class="tarefas">
                     <div class="tarefa">
-                        <h2>0</h2>
+                        <h2><?php echo $num_linhas_aberta;?></h2>
+                        <h3>Aberta</h3>
+                    </div>
+                    <div class="tarefa">
+                        <h2><?php echo $num_linhas_concluido;?></h2>
                         <h3>Refazer</h3>
                     </div>
                     <div class="tarefa">
-                        <h2>0</h2>
-                        <h3>Refazer</h3>
-                    </div>
-                    <div class="tarefa">
-                        <h2>0</h2>
-                        <h3>Refazer</h3>
+                        <h2><?php echo $num_linhas_refazer;?></h2>
+                        <h3>Concluidas</h3>
                     </div>
                 </div>
             </div>
