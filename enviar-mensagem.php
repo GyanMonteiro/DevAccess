@@ -26,7 +26,7 @@ include("conexao.php");
         exit;
 }
 
-    $sql = "INSERT INTO notificacoes (nome, usuario, remetente, mensagem) VALUES ('$nome', '$usuario', '$remetente', '$menssagem')";
+    $sql = "INSERT INTO notificacoes (nome, usuario, remetente, menssagem) VALUES ('$nome', '$usuario', '$remetente', '$menssagem')";
 
 
     if ($conexao->query($sql) === TRUE) {

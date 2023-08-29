@@ -3,16 +3,11 @@ include("conexao.php");
 
 if (!isset($_SESSION)) {
     session_start();
-
-    // Certifique-se de incluir o código de conexão com o banco de dados aqui
-    // $conexao = new mysqli("nome_do_host", "nome_de_usuario", "senha", "nome_do_banco");
     
-    // Verifica se a conexão foi bem sucedida
     if ($conexao->connect_error) {
         die("Conexão falhou: " . $conexao->connect_error);
     }
 
-    // Utiliza declarações preparadas para evitar injeção de SQL
     $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Aberto'";
     $stmt = $conexao->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
@@ -21,12 +16,10 @@ if (!isset($_SESSION)) {
     $sql_query = $stmt->get_result();
     
     if ($sql_query) {
-        // Obtém o número total de linhas encontradas
         $num_linhas_aberta = $sql_query->num_rows;
         
-        // Processa o resultado da consulta
+
         while ($row = $sql_query->fetch_assoc()) {
-            // Faça algo com cada linha de dados
         }
     } else {
         die("Falha na execução da consulta.");
@@ -40,12 +33,9 @@ if (!isset($_SESSION)) {
     $sql_query = $stmt->get_result();
     
     if ($sql_query) {
-        // Obtém o número total de linhas encontradas
         $num_linhas_concluido = $sql_query->num_rows;
         
-        // Processa o resultado da consulta
         while ($row = $sql_query->fetch_assoc()) {
-            // Faça algo com cada linha de dados
         }
     } else {
         die("Falha na execução da consulta.");
@@ -59,12 +49,9 @@ if (!isset($_SESSION)) {
     $sql_query = $stmt->get_result();
     
     if ($sql_query) {
-        // Obtém o número total de linhas encontradas
         $num_linhas_refazer = $sql_query->num_rows;
         
-        // Processa o resultado da consulta
         while ($row = $sql_query->fetch_assoc()) {
-            // Faça algo com cada linha de dados
         }
     } else {
         die("Falha na execução da consulta.");
@@ -199,9 +186,14 @@ if (!isset($_SESSION)) {
                     echo "<div class='nova-notificacao'>";
                     echo "<img src='src/img/notification.svg' alt=''>";
                     echo "<div class='info-notificacao'>";
+                    echo "<span style='display: none;'>".$dados_notificacoes['id']."</span>";
                     echo "<h1>".$dados_notificacoes['remetente']."</h1>";
-                    echo "<span>".$dados_notificacoes['mensagem']."</span>";
+                    echo "<span>".$dados_notificacoes['menssagem']."</span>";
                     echo "</div>";
+                    echo "<form action='excluir-notificacao.php' method='post'>";
+                    echo "<input type='hidden' name='notificacao_id' value='".$dados_notificacoes['id']."'>";
+                    echo "<button class='botao-notificacao' type='submit' name='enviar'><img src='src/img/trash.svg' alt=''></button>";
+                    echo "</form>";
                     echo "</div>";
                 }
             ?>
