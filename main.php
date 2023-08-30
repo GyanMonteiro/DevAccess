@@ -85,6 +85,12 @@ if (!isset($_SESSION)) {
     
     $resultadoNotificacoes = $stmt->get_result();
 
+    $sql_code = "SELECT * FROM eventos";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->execute();
+    
+    $resultadoEventos = $stmt->get_result();
+
     $stmt->close();
     $conexao->close();
 }
@@ -257,9 +263,30 @@ if (!isset($_SESSION)) {
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Eventos</h6>
-        
                             </div>
-                            
+                            <table class="table text-start align-middle table-bordered table-hover mb-0" cellspacing="20px">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Organizador</th>
+                            <th>Tema</th>
+                            <th>Data do evento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            while($dados_eventos = mysqli_fetch_assoc($resultadoEventos))
+                            {
+                                echo "<tr>";
+                                echo "<td>".$dados_eventos['nome_evento']."</td>";
+                                echo "<td>".$dados_eventos['organizador']."</td>";
+                                echo "<td>".$dados_eventos['tema']."</td>";
+                                echo "<td>".$dados_eventos['data']."</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </tbody>
+                </table>
                         </div>
                     </div>
                 </div>
