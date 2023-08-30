@@ -321,7 +321,7 @@ tbody td:last-child{
 }
 table{
     border-width: 0 !important;
-    border-spacing: 0 20px!important;
+    border-spacing: 0 18px!important;
     text-align: center !important;
 }
 
@@ -330,4 +330,7 @@ table{
     padding: 8px;
     background-color: #181719;
     border-radius: 20px;
+}
+.teste{
+    min-height: 260px;
 }

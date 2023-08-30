@@ -194,7 +194,7 @@ if (!isset($_SESSION)) {
                         <i class="bi bi-card-checklist text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas Abertas</p>
-                                <h6 class="mb-0"><?php echo $num_linhas_aberta;?></h6>
+                                <h3 class="mb-0"><?php echo $num_linhas_aberta;?></h3>
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@ if (!isset($_SESSION)) {
                             <i class="bi bi-arrow-clockwise text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas para Refazer</p>
-                                <h6 class="mb-0"><?php echo $num_linhas_refazer;?></h6>
+                                <h3 class="mb-0"><?php echo $num_linhas_refazer;?></h3>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ if (!isset($_SESSION)) {
                         <i class="bi bi-hourglass-split text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas em analise</p>
-                                <h6 class="mb-0"><?php echo $num_linhas_analise;?></h6>
+                                <h3 class="mb-0"><?php echo $num_linhas_analise;?></h3>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ if (!isset($_SESSION)) {
                         <i class="bi bi-check text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas Concluidas</p>
-                                <h6 class="mb-0"><?php echo $num_linhas_concluido;?></h6>
+                                <h3 class="mb-0"><?php echo $num_linhas_concluido;?></h3>
                             </div>
                         </div>
                     </div>
@@ -265,15 +265,7 @@ if (!isset($_SESSION)) {
                                 <h6 class="mb-0">Eventos</h6>
                             </div>
                             <table class="table text-start align-middle table-bordered table-hover mb-0" cellspacing="10px">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Organizador</th>
-                            <th>Tema</th>
-                            <th>Data</th>
-                            <th>Local</th>
-                        </tr>
-                    </thead>
+
                     <tbody>
                         <?php 
                             while($dados_eventos = mysqli_fetch_assoc($resultadoEventos))
