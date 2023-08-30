@@ -76,84 +76,192 @@ if (!isset($_SESSION)) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/styles/style-main.css">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <section class="container">
-    <nav class="sidebar close" id="sidebar">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="src/img/user-bold.svg" alt="">
-                </span>
-
-                <div class="text header-text">
-                    <span class="name"><?php echo $_SESSION['nome'];?></span>
-                    <span class="profession"><?php echo $_SESSION['profissao']; ?></span>
-                </div>
-            </div>
-            <div class="div-botao">
-                <button id="btn"><img src="src/img/close-square.svg" alt=""></button>
-            </div>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#"><img src="src/img/home.svg" alt="">
-                            <span class="text nav-text">Início</span></a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#"><img src="src/img/user-outline.svg" alt="">
-                            <span class="text nav-text">Perfil</span></a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#"><img src="src/img/task.svg" alt="">
-                            <span class="text nav-text">Tarefas</span></a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#"><img src="src/img/setting-2.svg" alt="">
-                            <span class="text nav-text">Configurações</span></a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="button-content">
-                <li class="logout">
-                    <a href="#"><img src="src/img/logout.svg" alt="">
-                        <span class="text nav-text">Sair</span></a>
-                </li>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
-    </nav>
-        <div class="tarefas-projetos">
-            <div class="section-tarefas close-section" id="section-tarefas">
-                <h1>Tarefas semanais</h1>
-                <div class="tarefas">
-                    <div class="tarefa">
-                        <h2><?php echo $num_linhas_aberta;?></h2>
-                        <h3>Aberta</h3>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img src="src/img/user-bold.svg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
-                    <div class="tarefa">
-                        <h2><?php echo $num_linhas_concluido;?></h2>
-                        <h3>Refazer</h3>
+                    <div class="ms-3">
+                        <h6 class="mb-0"><?php echo $_SESSION['nome'];?></h6>
+                        <span><?php echo $_SESSION['profissao']; ?></span>
                     </div>
-                    <div class="tarefa">
-                        <h2><?php echo $num_linhas_refazer;?></h2>
-                        <h3>Concluidas</h3>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="index.html" class="nav-item nav-link active"><i class="bi bi-house-door-fill"></i>Dashboard</a>
+                    <a href="widget.html" class="nav-item nav-link"><i class="bi bi-list-task"></i>Tarefas</a>
+                    <a href="form.html" class="nav-item nav-link"><i class="bi bi-gear-fill"></i>Configurações</a>
+                    <a href="table.html" class="nav-item nav-link"><i class="bi bi-file-earmark-fill"></i>Documentação</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="bi bi-bar-chart-fill"></i>Estatisticas</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <img src="src/img/close-square.svg" alt="">
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img src="src/img/user-bold.svg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome'];?></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="bi bi-card-checklist text-primary" style="font-size: 4rem;"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Tarefas Abertas</p>
+                                <h6 class="mb-0"><?php echo $num_linhas_aberta;?></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="bi bi-arrow-clockwise text-primary" style="font-size: 4rem;"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Tarefas para Refazer</p>
+                                <h6 class="mb-0"><?php echo $num_linhas_refazer;?></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="bi bi-hourglass-split text-primary" style="font-size: 4rem;"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Tarefas em analise</p>
+                                <h6 class="mb-0">0</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="bi bi-check text-primary" style="font-size: 4rem;"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Tarefas Concluidas</p>
+                                <h6 class="mb-0"><?php echo $num_linhas_concluido;?></h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="section-projetos close-section" id="section-projetos">
-                <h1>Projetos</h1>
-                <table cellspacing="20px">
+            <!-- Sale & Revenue End -->
+
+
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Notificações</h6>
+                                
+                            </div>
+                            <div class="notificacoes">
+                                <?php 
+                                    while($dados_notificacoes = mysqli_fetch_assoc($resultadoNotificacoes))
+                                    {
+                                        echo "<div class='d-flex w-90 h-75 p-3 border border-primary border-3 mb-2 rounded-3'>";
+                                        echo "<div class='ms-5'>";
+                                        echo "<span style='display: none;'>".$dados_notificacoes['id']."</span>";
+                                        echo "<h4 class='m-0'>".$dados_notificacoes['remetente']."</h4>";
+                                        echo "<span >".$dados_notificacoes['menssagem']."</span>";
+                                        echo "</div>";
+                                        echo "<form class='w-100 m-auto d-flex justify-content-end' action='excluir-notificacao.php' method='post'>";
+                                        echo "<input type='hidden' name='notificacao_id' value='".$dados_notificacoes['id']."'>";
+                                        echo "<button class='border-0 bg-primary rounded' type='submit' name='enviar'><i class='bi bi-trash-fill'></i></button>";
+                                        echo "</form>";
+                                        echo "</div>";
+                                    }
+                                ?>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Eventos</h6>
+        
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sales Chart End -->
+
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Projetos</h6>
+
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0" cellspacing="20px">
                     <thead>
                         <tr>
                             <th>Projeto</th>
@@ -176,61 +284,24 @@ if (!isset($_SESSION)) {
                         ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="notificacoes">
-            <h1>Notificações</h1>
-            <?php 
-                while($dados_notificacoes = mysqli_fetch_assoc($resultadoNotificacoes))
-                {
-                    echo "<div class='nova-notificacao'>";
-                    echo "<img src='src/img/notification.svg' alt=''>";
-                    echo "<div class='info-notificacao'>";
-                    echo "<span style='display: none;'>".$dados_notificacoes['id']."</span>";
-                    echo "<h1>".$dados_notificacoes['remetente']."</h1>";
-                    echo "<span>".$dados_notificacoes['menssagem']."</span>";
-                    echo "</div>";
-                    echo "<form action='excluir-notificacao.php' method='post'>";
-                    echo "<input type='hidden' name='notificacao_id' value='".$dados_notificacoes['id']."'>";
-                    echo "<button class='botao-notificacao' type='submit' name='enviar'><img src='src/img/trash.svg' alt=''></button>";
-                    echo "</form>";
-                    echo "</div>";
-                }
-            ?>
-        </div>
-        <button class="btn-chat" id="btn-chat">
-            <img class="chat-img" src="src/img/message.svg" alt="">
-        </button>
-            <div class="menssagem menssagem-close" id="menssagem">
-                <h1>Menssagem</h1>
-                <form class="form-menssagem" action="enviar-mensagem.php" method="post">
-                    <div class="textfield">
-                        <input type="text" name="to-usuario" id="usuario" placeholder="Usuário">
                     </div>
-                    <div class="textfield">
-                        <input class="menssagem-input" type="text" name="menssagem" id="menssagem" placeholder="Menssagem">
-                    </div>
-                    <input type="submit" name="registrar" value="enviar" class="btn">
-                </form>
+                </div>
             </div>
-    </section>
-</body>
-<script language='javascript'>
-  const sideBar = document.getElementById('sidebar');
-  const btnMenu = document.getElementById('btn');
-  const btnChat = document.getElementById('btn-chat');
-  const menssagem = document.getElementById('menssagem');
-  const sectionTarefas = document.getElementById('section-tarefas');
-  const sectionProjetos = document.getElementById('section-projetos');
-  
-  btnMenu.addEventListener('click', () => {
-      sideBar.classList.toggle('close');
-      sectionTarefas.classList.toggle("close-section");
-      sectionProjetos.classList.toggle("close-section");
-  })
+            <!-- Recent Sales End -->
 
-  btnChat.addEventListener('click', () => {
-      menssagem.classList.toggle('menssagem-close');
-  })
-</script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
 </html>

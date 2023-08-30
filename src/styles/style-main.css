@@ -54,7 +54,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 53vw;
-    height: 32.3vw;
+    min-height: 28.7vw;
     margin-top: 40px;
     margin-left: 4%;
     background: #27242C;
@@ -171,11 +171,15 @@ tbody td:last-child{
 }
 table{
     margin-top: 3%;
-    width: 90%;
+    width: 100%;
     border-spacing: 0 20px;
     text-align: center;
 }
-
+.table-responsive{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .close-section{
     width: 65vw;
 }
@@ -369,8 +373,8 @@ header .image-text .header-text{
     background: #27242C;
     display: flex;
     flex-direction: column;
-    left: 70vw;
-    top: 26vw;
+    left: 60rem;
+    top: 19.7rem;
     text-align: center;
     align-items: center;
     justify-content: center;
