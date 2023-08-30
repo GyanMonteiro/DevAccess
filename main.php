@@ -203,7 +203,7 @@ if (!isset($_SESSION)) {
         </button>
             <div class="menssagem menssagem-close" id="menssagem">
                 <h1>Menssagem</h1>
-                <form action="enviar-mensagem.php" method="post">
+                <form class="form-menssagem" action="enviar-mensagem.php" method="post">
                     <div class="textfield">
                         <input type="text" name="to-usuario" id="usuario" placeholder="Usuário">
                     </div>
