@@ -239,7 +239,7 @@ if (!isset($_SESSION)) {
                                 <h6 class="mb-0">Notificações</h6>
                                 
                             </div>
-                            <div class="notificacoes">
+                            <div class="notificacoes mt-5">
                                 <?php 
                                     while($dados_notificacoes = mysqli_fetch_assoc($resultadoNotificacoes))
                                     {
@@ -261,16 +261,17 @@ if (!isset($_SESSION)) {
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-0">
                                 <h6 class="mb-0">Eventos</h6>
                             </div>
-                            <table class="table text-start align-middle table-bordered table-hover mb-0" cellspacing="20px">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0" cellspacing="10px">
                     <thead>
                         <tr>
                             <th>Nome</th>
                             <th>Organizador</th>
                             <th>Tema</th>
-                            <th>Data do evento</th>
+                            <th>Data</th>
+                            <th>Local</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -282,6 +283,7 @@ if (!isset($_SESSION)) {
                                 echo "<td>".$dados_eventos['organizador']."</td>";
                                 echo "<td>".$dados_eventos['tema']."</td>";
                                 echo "<td>".$dados_eventos['data']."</td>";
+                                echo "<td>".$dados_eventos['local']."</td>";
                                 echo "</tr>";
                             }
                         ?>
