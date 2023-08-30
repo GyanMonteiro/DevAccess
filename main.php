@@ -56,7 +56,21 @@ if (!isset($_SESSION)) {
     } else {
         die("Falha na execução da consulta.");
     }
-
+    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Analise'";
+    $stmt = $conexao->prepare($sql_code);
+    $stmt->bind_param('s', $_SESSION["usuario"]);
+    $stmt->execute();
+    
+    $sql_query = $stmt->get_result();
+    
+    if ($sql_query) {
+        $num_linhas_analise = $sql_query->num_rows;
+        
+        while ($row = $sql_query->fetch_assoc()) {
+        }
+    } else {
+        die("Falha na execução da consulta.");
+    }
     $sql_code = "SELECT * FROM projetos WHERE usuario = ?";
     $stmt = $conexao->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
@@ -192,7 +206,7 @@ if (!isset($_SESSION)) {
                         <i class="bi bi-hourglass-split text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas em analise</p>
-                                <h6 class="mb-0">0</h6>
+                                <h6 class="mb-0"><?php echo $num_linhas_analise;?></h6>
                             </div>
                         </div>
                     </div>
