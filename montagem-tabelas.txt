@@ -1,0 +1,40 @@
+Banco de dados: devaccess
+
+tabela usuarios:
+    id(padrao-id)
+    nome(varchar-255)
+    usuario(varchar-255)
+    profissao(varchar-255)
+    email(varchar-255)
+    senha(varchar-255)
+
+tabela tarefas:
+    id(padrao-id)
+    nome(varchar-255)
+    usuario(varchar-255)
+    tarefa(varchar-255) 
+    situacao(varchar-255) --opcoes--- Aberto,Concluido,Refazer,Analise --------
+
+tabela projetos: 
+    id(padrao-id)
+    nome(varchar-255) 
+    usuario(varchar-255) 
+    nome_projeto(varchar-255) 
+    nome_empresa(varchar-255) 
+    status(varchar-255) ----Alguma etapa do desenvolvimento-----
+    data_conclusao(varchar-255) 
+
+tabela notificacoes:
+    id(padrao-id)
+    nome(varchar-255)
+    remetente(varchar-255) 
+    usuario(varchar-255) 
+    menssagem(varchar-255) 
+
+tabela eventos:
+    id(padrao-id)
+    nome_evento(varchar-255)
+    organizador(varchar-255) 
+    tema(varchar-255) 
+    data(varchar-255) 
+    local(varchar-255) 
