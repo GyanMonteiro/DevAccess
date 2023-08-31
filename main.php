@@ -156,10 +156,10 @@ if (!isset($_SESSION)) {
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="bi bi-list-task me-2"></i>Tarefas</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
+                    <a href="tarefas.php" class="nav-item nav-link"><i class="bi bi-list-task me-2"></i>Tarefas</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
                 </div>
             </nav>
         </div>
