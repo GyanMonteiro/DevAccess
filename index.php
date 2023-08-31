@@ -33,6 +33,7 @@
                     $_SESSION['nome'] = $usuarios['nome'];
                     $_SESSION['usuario'] = $usuarios['usuario'];
                     $_SESSION['profissao'] = $usuarios['profissao'];
+                    $_SESSION['ativa'] = TRUE;
 
                     header("Location: main.php");
                 } else {

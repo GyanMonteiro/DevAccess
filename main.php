@@ -1,6 +1,7 @@
 <?php 
 include("conexao.php");
 
+
 if (!isset($_SESSION)) {
     session_start();
     
@@ -93,6 +94,8 @@ if (!isset($_SESSION)) {
 
     $stmt->close();
     $conexao->close();
+}if (!isset($_SESSION['ativa'])){
+    header("location: index.php");
 }
 ?>
 
@@ -178,7 +181,7 @@ if (!isset($_SESSION)) {
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item"><i class="bi bi-person me-2"></i>Meu Perfil</a>
                             <a href="#" class="dropdown-item"><i class="bi bi-gear me-2"></i>Configurações</a>
-                            <a href="#" class="dropdown-item"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
+                            <a href="logout.php" class="dropdown-item"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
                         </div>
                     </div>
                 </div>
