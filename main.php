@@ -317,11 +317,12 @@ if (!isset($_SESSION)) {
                                 echo "</tr>";
                             }
                         ?>
-                    </tbody>
-                </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-chat-left-dots"></i></a>
+        </div>
             <!-- Recent Sales End -->
 
     <!-- JavaScript Libraries -->
