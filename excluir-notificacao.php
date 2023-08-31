@@ -7,11 +7,11 @@
         
             $query = "DELETE FROM notificacoes WHERE id = $notificacao_id";
             
-            if(mysqli_query($conexao, $query))
+            if(mysqli_query($mysqli, $query))
             {
                 header('Location: main.php');
             }
 
-            mysqli_close($conexao);
+            mysqli_close($mysqli);
         }
 ?>

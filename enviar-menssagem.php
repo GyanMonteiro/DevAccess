@@ -3,7 +3,7 @@ session_start();
 include("conexao.php");
 
     $sql_code = "SELECT * FROM usuarios WHERE usuario = ?";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $postUsuario = trim($_POST['to-usuario']);
     $stmt->bind_param('s', $postUsuario);
     $stmt->execute();
@@ -12,12 +12,12 @@ include("conexao.php");
     $dados_usuarios = mysqli_fetch_assoc($resultadoPesquisa);
 
     $nome = $dados_usuarios['nome'];
-    $usuario = mysqli_real_escape_string($conexao, trim($_POST['to-usuario']));
+    $usuario = mysqli_real_escape_string($mysqli, trim($_POST['to-usuario']));
     $remetente = $_SESSION['nome'];
-    $menssagem = mysqli_real_escape_string($conexao, trim($_POST['menssagem']));
+    $menssagem = mysqli_real_escape_string($mysqli, trim($_POST['menssagem']));
 
     $sql = "SELECT COUNT(*) AS total FROM usuarios WHERE usuario = '$usuario'";
-    $result = mysqli_query($conexao, $sql);
+    $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($row['total'] = 0) {
@@ -29,13 +29,13 @@ include("conexao.php");
     $sql = "INSERT INTO notificacoes (nome, usuario, remetente, menssagem) VALUES ('$nome', '$usuario', '$remetente', '$menssagem')";
 
 
-    if ($conexao->query($sql) === TRUE) {
+    if ($mysqli->query($sql) === TRUE) {
         $_SESSION['status_cadastro'] = true;
         header('Location: main.php');
     } else {
-        echo "Erro: " . $sql . "<br>" . $conexao->error;
+        echo "Erro: " . $sql . "<br>" . $mysqli->error;
     }
     $stmt->close();
-    $conexao->close();
+    $mysqli->close();
 
 ?>

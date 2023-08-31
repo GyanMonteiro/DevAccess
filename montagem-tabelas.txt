@@ -38,3 +38,14 @@ tabela eventos:
     tema(varchar-255) 
     data(varchar-255) 
     local(varchar-255) 
+
+
+    create table projetos (
+  id INT auto_increment primary key,
+  nome VARCHAR(255) not null,
+  usuario VARCHAR(255) not null,
+  nome_projeto VARCHAR(255) not null,
+  nome_empresa VARCHAR(255) not null,
+  status VARCHAR(255) not null,
+  data_conclusao VARCHAR(255) not null
+)

@@ -5,12 +5,12 @@ include("conexao.php");
 if (!isset($_SESSION)) {
     session_start();
     
-    if ($conexao->connect_error) {
-        die("Conexão falhou: " . $conexao->connect_error);
+    if ($mysqli->connect_error) {
+        die("Conexão falhou: " . $mysqli->connect_error);
     }
 
     $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Aberto'";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
@@ -27,7 +27,7 @@ if (!isset($_SESSION)) {
     }
 
     $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Concluido'";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
@@ -43,7 +43,7 @@ if (!isset($_SESSION)) {
     }
     
     $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Refazer'";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
@@ -58,7 +58,7 @@ if (!isset($_SESSION)) {
         die("Falha na execução da consulta.");
     }
     $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Analise'";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
@@ -73,30 +73,31 @@ if (!isset($_SESSION)) {
         die("Falha na execução da consulta.");
     }
     $sql_code = "SELECT * FROM projetos WHERE usuario = ?";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
     $resultadoProjetos = $stmt->get_result();
 
     $sql_code = "SELECT * FROM notificacoes WHERE usuario = ?";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
     $resultadoNotificacoes = $stmt->get_result();
 
     $sql_code = "SELECT * FROM eventos";
-    $stmt = $conexao->prepare($sql_code);
+    $stmt = $mysqli->prepare($sql_code);
     $stmt->execute();
     
     $resultadoEventos = $stmt->get_result();
 
     $stmt->close();
-    $conexao->close();
+    $mysqli->close();
 }if (!isset($_SESSION['ativa'])){
     header("location: index.php");
 }
+
 ?>
 
 

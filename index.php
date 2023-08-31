@@ -12,11 +12,11 @@
             $mensagemSenha = 'Preencha o campo de senha';
         }
         else{
-            $usuario = $conexao->real_escape_string($_POST['usuario']);
-            $senha = $conexao->real_escape_string($_POST['senha']);
+            $usuario = $mysqli->real_escape_string($_POST['usuario']);
+            $senha = $mysqli->real_escape_string($_POST['senha']);
 
             $sql_code = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
-            $sql_query = $conexao->query($sql_code) or die("FALHA");
+            $sql_query = $mysqli->query($sql_code) or die("FALHA");
 
             $quantidade = $sql_query->num_rows;
 
