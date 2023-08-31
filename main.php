@@ -127,7 +127,7 @@ if (!isset($_SESSION)) {
 </head>
 
 <body>
-    <div class="container-fluid position-relative d-flex p-0">
+    <div class="container-fluid position-relative d-flex p-0 bg-body">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -138,7 +138,7 @@ if (!isset($_SESSION)) {
 
 
         <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
+        <div class="sidebar pe-4 pb-3 shadow">
             <nav class="navbar bg-secondary navbar-dark">
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -151,11 +151,11 @@ if (!isset($_SESSION)) {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="bi bi-house-door-fill"></i>Dashboard</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="bi bi-list-task"></i>Tarefas</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="bi bi-gear-fill"></i>Configurações</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="bi bi-file-earmark-fill"></i>Documentação</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="bi bi-bar-chart-fill"></i>Estatisticas</a>
+                    <a href="index.html" class="nav-item nav-link active"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
+                    <a href="widget.html" class="nav-item nav-link"><i class="bi bi-list-task me-2"></i>Tarefas</a>
+                    <a href="form.html" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
+                    <a href="table.html" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
                 </div>
             </nav>
         </div>
@@ -176,9 +176,9 @@ if (!isset($_SESSION)) {
                             <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome'];?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="#" class="dropdown-item"><i class="bi bi-person me-2"></i>Meu Perfil</a>
+                            <a href="#" class="dropdown-item"><i class="bi bi-gear me-2"></i>Configurações</a>
+                            <a href="#" class="dropdown-item"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ if (!isset($_SESSION)) {
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4 shadow">
                         <i class="bi bi-card-checklist text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas Abertas</p>
@@ -199,7 +199,7 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4 shadow">
                             <i class="bi bi-arrow-clockwise text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas para Refazer</p>
@@ -208,7 +208,7 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4 shadow">
                         <i class="bi bi-hourglass-split text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas em analise</p>
@@ -217,7 +217,7 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4 shadow">
                         <i class="bi bi-check text-primary" style="font-size: 4rem;"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Tarefas Concluidas</p>
@@ -234,7 +234,7 @@ if (!isset($_SESSION)) {
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
+                        <div class="bg-secondary text-center rounded p-4 shadow">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Notificações</h6>
                                 
@@ -260,7 +260,7 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
+                        <div class="bg-secondary text-center rounded p-4 shadow">
                             <div class="d-flex align-items-center justify-content-between mb-0">
                                 <h6 class="mb-0">Eventos</h6>
                             </div>
@@ -290,7 +290,7 @@ if (!isset($_SESSION)) {
 
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
+                <div class="bg-secondary text-center rounded p-4 shadow">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Projetos</h6>
 
@@ -321,8 +321,25 @@ if (!isset($_SESSION)) {
                     </table>
                 </div>
             </div>
-                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-chat-left-dots"></i></a>
-        </div>
+                <button class="btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="bi bi-chat-left-dots"></i></button>
+
+                    <div class="offcanvas offcanvas-end bg-secondary rounded-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel"id="menu">
+                        <div class="offcanvas-header">
+                            <h2 class="text-center">Menssagem</h2>
+                        </div>
+                        <div class="offcanvas-body">
+                            <form class="enviar-menssagem h-75" action="enviar-menssagem.php" method="post">
+                            <div class="textfield">
+                                <input class="form-control-lg w-100 mb-3" type="text" placeholder="Usuário" name="to-usuario" id="usuario">
+                            </div>
+                            <div class="textfield">
+                                <input class="form-control-lg w-100 pt-5 pb-5 mb-3" type="text" placeholder="Menssagem" name="menssagem" id="usuario">
+                            </div>
+                                <input class="w-100 mt-3 p-3 btn-submit" type="submit" value="ENVIAR MENSSAGEM">
+                            </form>
+                        </div>
+                    </div>
+    </div>
             <!-- Recent Sales End -->
 
     <!-- JavaScript Libraries -->

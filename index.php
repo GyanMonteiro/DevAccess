@@ -58,7 +58,7 @@
     <div class="main-div">
         <div class="left-login">
             <h1>Faça login<br>E entre para o nosso time</h1>
-            <img src="src/img/astronauta.svg" class="left-login-img" alt="">
+            <img src="img/astronauta.svg" class="left-login-img" alt="">
         </div>
         <div class="right-login">
             <div class="card-login">
