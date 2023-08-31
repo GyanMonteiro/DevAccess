@@ -167,7 +167,7 @@ if (!isset($_SESSION)) {
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <img src="src/img/close-square.svg" alt="">
+                    <img src="img/close-square.svg" alt="">
                 </a>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
