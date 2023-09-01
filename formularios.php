@@ -194,11 +194,10 @@ if (isset($_POST['to-usuario']) && isset($_POST['menssagem'])) {
     if ($mysqli->query($sql) === TRUE) {
         $_SESSION['status_cadastro'] = true;
         
-        // Redireciona o usuário de volta para a página de origem
         if (isset($_SESSION['pagina_anterior'])) {
             header("Location: ".$_SERVER['HTTP_REFERER']."");
         } else {
-            header('Location: main.php'); // Página padrão se a origem for desconhecida
+            header('Location: main.php');
         }
     }
     $stmt->close();
@@ -234,7 +233,6 @@ if (isset($_POST['to-usuario']) && isset($_POST['tarefa'])) {
     $postUsuario = trim($_POST['to-usuario']);
     $tarefa = trim($_POST['tarefa']);
 
-    // Consulta preparada para selecionar dados do usuário
     $sql_code = "SELECT * FROM usuarios WHERE usuario = ?";
     $stmt = $mysqli->prepare($sql_code);
     $stmt->bind_param('s', $postUsuario);
@@ -244,12 +242,10 @@ if (isset($_POST['to-usuario']) && isset($_POST['tarefa'])) {
     $dados_usuarios = mysqli_fetch_assoc($resultadoPesquisa);
 
 if ($dados_usuarios) {
-    // Usuário encontrado, obter o nome e outros dados necessários
     $nome = $dados_usuarios['nome'];
     $usuario = mysqli_real_escape_string($mysqli, $postUsuario);
     $situacao = 'Aberto';
 
-    // Consulta preparada para inserir dados na tabela de tarefas
     $sql = "INSERT INTO tarefas (nome, usuario, tarefa, situacao) VALUES (?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('ssss', $nome, $usuario, $tarefa, $situacao);
@@ -258,11 +254,9 @@ if ($dados_usuarios) {
         $_SESSION['status_cadastro'] = true;
         header('Location: tarefas.php');
     } else {
-        // Trate os erros da consulta de inserção, se necessário
         echo "Erro ao inserir tarefa: " . $stmt->error;
     }
 } else {
-    // Usuário não encontrado, trate o cenário de usuário não existente
     echo "Usuário não encontrado.";
 }
 
@@ -273,7 +267,7 @@ $mysqli->close();
 
 
 
-
+    //-------------------CADASTRAR PROJETO----------------------//
 
 if (isset($_POST['to-usuario']) && isset($_POST['nome_projeto'])) {
     $postUsuario = trim($_POST['to-usuario']);
@@ -296,7 +290,7 @@ if (isset($_POST['to-usuario']) && isset($_POST['nome_projeto'])) {
 
 
 
-
+    //-------------------CADASTRAR EVENTO----------------------//
 
 if (isset($_POST['nome_evento']) && isset($_POST['organizador'])) {
     $nomeEvento = trim($_POST['nome_evento']);
