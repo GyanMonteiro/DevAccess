@@ -193,7 +193,13 @@ if (isset($_POST['to-usuario']) && isset($_POST['menssagem'])) {
 
     if ($mysqli->query($sql) === TRUE) {
         $_SESSION['status_cadastro'] = true;
-        header('Location: main.php');
+        
+        // Redireciona o usuário de volta para a página de origem
+        if (isset($_SESSION['pagina_anterior'])) {
+            header("Location: ".$_SERVER['HTTP_REFERER']."");
+        } else {
+            header('Location: main.php'); // Página padrão se a origem for desconhecida
+        }
     }
     $stmt->close();
     $mysqli->close();

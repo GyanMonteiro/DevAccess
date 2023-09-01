@@ -4,6 +4,7 @@ include("conexao.php");
 
 if (!isset($_SESSION)) {
     session_start();
+    $_SESSION['pagina_anterior'] = $_SERVER['HTTP_REFERER'];
     
     if ($mysqli->connect_error) {
         die("Conexão falhou: " . $mysqli->connect_error);
@@ -15,13 +16,26 @@ if (!isset($_SESSION)) {
     
     $tarefasAbertas = $stmt->get_result();
     
+    $sql_code = "SELECT * FROM projetos";
+    $stmt = $mysqli->prepare($sql_code);
+    $stmt->execute();
+    
+    $resultadoProjetos = $stmt->get_result();
+    
+    $sql_code = "SELECT * FROM eventos";
+    $stmt = $mysqli->prepare($sql_code);
+    $stmt->execute();
+    
+    $resultadoEventos = $stmt->get_result();
+
+
+
 
     $stmt->close();
     $mysqli->close();
 }if (!isset($_SESSION['ativa'])){
     header("location: index.php");
 }
-
 ?>
 
 
@@ -83,18 +97,15 @@ if (!isset($_SESSION)) {
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="main.php" class="nav-item nav-link"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
-                    <a href="tarefas.php" class="nav-item nav-link active"><i
-                            class="bi bi-list-task me-2"></i>Tarefas</a>
+                    <a href="tarefas.php" class="nav-item nav-link "><i class="bi bi-list-task me-2"></i>Tarefas</a>
                     <?php if ($_SESSION['tipo'] === 'adm'): ?>
                     <a href="adm.php" class="nav-item nav-link"><i
                             class="bi bi-person-circle me-2"></i>Administrador</a>
                     <?php endif; ?>
                     <a href="manutencao.php" class="nav-item nav-link"><i
                             class="bi bi-gear-fill me-2"></i>Configurações</a>
-                    <a href="manutencao.php" class="nav-item nav-link"><i
-                            class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
-                    <a href="manutencao.php" class="nav-item nav-link"><i
-                            class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
                 </div>
             </nav>
         </div>
@@ -128,67 +139,15 @@ if (!isset($_SESSION)) {
 
 
             <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4 shadow h-100">
-                            <div class="d-flex align-items-center justify-content-between mb-0">
-                                <h6 class="mb-3">Adicionar projetos</h6>
-
-                            </div>
-                            <div class="notificacoes mb-0">
-                                <div class="table-responsive">
-                                    <form action="formularios.php" method="post">
-                                        <div class="textfield">
-                                            <input class="form-control-lg w-100 pt-3 pb-3 mb-3" type="text"
-                                                name="to-usuario" id="" placeholder="Usuário">
-                                        </div>
-                                        <div class="textfield">
-                                            <input class="form-control-lg w-100 pt-3 pb-3 mb-3" type="text"
-                                                name="tarefa" id="" placeholder="Tarefa">
-                                        </div>
-                                        <input type="submit" name="registrar" value="registrar" class="btn-submit">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4 shadow h-100">
-                            <div class="d-flex align-items-center justify-content-between mb-0">
-                                <h6 class="mb-0">Gerenciar Tarefas</h6>
-                            </div>
-                            <table class="table text-start align-middle table-bordered table-hover mb-0"
-                                cellspacing="10px">
-
-                                <tbody>
-                                    <?php 
-                            while($dados_tarefas = mysqli_fetch_assoc($tarefasAbertas))
-                            {
-                                echo "<tr>";
-                                echo "<td>".$dados_tarefas['nome']."</td>";
-                                echo "<td>".$dados_tarefas['usuario']."</td>";
-                                echo "<td>".$dados_tarefas['tarefa']."</td>";
-
-                                echo "<td><form action='formularios.php' method='post'>
-                                <button type='submit' name='modificar_valor' value='Refazer' class='border-0 rounded-3 btn-warning'><i class='bi bi-arrow-counterclockwise'></i></button>
-
-                                <button type='submit' name='modificar_valor' value='Analise' class='border-0 rounded-3 btn-warning'><i
-                                        class='bi bi-hourglass-split'></i></button>
-                                <button type='submit' name='modificar_valor' value='Concluido' class='border-0 rounded-3 btn-warning'><i
-                                        class='bi bi-check'></i></button>
-                                        <input type='hidden' name='tarefa_id' value='".$dados_tarefas['id']."'>
-                            </form></td>";
-                                echo "</tr>";
-                            }
-                        ?>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            <div class="container-fluid pt-4 px-4 w-100">
+                <div class="text-center">
+                    <i class="bi bi-x-octagon-fill text-primary" style="font-size: 10rem;"></i>
+                    <h2 class="m-0 text-primary">Em manutenção</h2>
+                    <h5 class="m-0 text-primary">Aguarde</h5>
                 </div>
             </div>
+
+
             <button class=" btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button"
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions"><i class="bi bi-chat-left-dots"></i></button>
@@ -212,23 +171,22 @@ if (!isset($_SESSION)) {
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- Recent Sales End -->
+            <!-- Recent Sales End -->
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js">
-        </script>
-        <script src="lib/chart/chart.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/tempusdominus/js/moment.min.js"></script>
-        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js">
+            </script>
+            <script src="lib/chart/chart.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/waypoints/waypoints.min.js"></script>
+            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+            <script src="lib/tempusdominus/js/moment.min.js"></script>
+            <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+            <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
 </body>
 
 </html>

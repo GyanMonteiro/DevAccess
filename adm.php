@@ -4,6 +4,7 @@ include("conexao.php");
 
 if (!isset($_SESSION)) {
     session_start();
+    $_SESSION['pagina_anterior'] = $_SERVER['HTTP_REFERER'];
     
     if ($mysqli->connect_error) {
         die("Conexão falhou: " . $mysqli->connect_error);
@@ -101,9 +102,12 @@ if (!isset($_SESSION)) {
                     <a href="adm.php" class="nav-item nav-link active"><i
                             class="bi bi-person-circle me-2"></i>Administrador</a>
                     <?php endif; ?>
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
+                    <a href="manutencao.php" class="nav-item nav-link"><i
+                            class="bi bi-gear-fill me-2"></i>Configurações</a>
+                    <a href="manutencao.php" class="nav-item nav-link"><i
+                            class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
+                    <a href="manutencao.php" class="nav-item nav-link"><i
+                            class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
                 </div>
             </nav>
         </div>
@@ -289,7 +293,7 @@ if (!isset($_SESSION)) {
                     <h2 class="text-center">Menssagem</h2>
                 </div>
                 <div class="offcanvas-body">
-                    <form class="enviar-menssagem h-75" action="enviar-menssagem.php" method="post">
+                    <form class="enviar-menssagem h-75" action="formularios.php" method="post">
                         <div class="textfield">
                             <input class="form-control-lg w-100 mb-3" type="text" placeholder="Usuário"
                                 name="to-usuario" id="usuario">
