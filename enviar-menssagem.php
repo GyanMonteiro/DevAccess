@@ -20,11 +20,6 @@ include("conexao.php");
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    if ($row['total'] = 0) {
-        $_SESSION['usuario_nao_existe'] = true;
-        header('Location: cadastro.php?usuario_nao_existe=true');
-        exit;
-}
 
     $sql = "INSERT INTO notificacoes (nome, usuario, remetente, menssagem) VALUES ('$nome', '$usuario', '$remetente', '$menssagem')";
 
@@ -32,8 +27,6 @@ include("conexao.php");
     if ($mysqli->query($sql) === TRUE) {
         $_SESSION['status_cadastro'] = true;
         header('Location: main.php');
-    } else {
-        echo "Erro: " . $sql . "<br>" . $mysqli->error;
     }
     $stmt->close();
     $mysqli->close();

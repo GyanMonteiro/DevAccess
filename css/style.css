@@ -307,7 +307,7 @@ thead{
 tbody tr {
     font-family: 'Poppins', sans-serif!important;
     font-weight: 500!important;
-    font-size: 1.3vw!important;
+    font-size: 1rem!important;
     color: #2B134B!important;
     background: #0F8!important;
     height: 50px!important;
@@ -425,4 +425,7 @@ table{
 }
 .menu-open{
     display: block;
+}
+.btn-1{
+    background: #2B134B;
 }

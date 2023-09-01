@@ -9,7 +9,7 @@
             
             if(mysqli_query($mysqli, $query))
             {
-                header('Location: main.php');
+                // header('Location: main.php');
             }
 
             mysqli_close($mysqli);

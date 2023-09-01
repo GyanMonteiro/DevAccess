@@ -9,75 +9,12 @@ if (!isset($_SESSION)) {
         die("Conexão falhou: " . $mysqli->connect_error);
     }
 
-    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Aberto'";
+    $sql_code = "SELECT * FROM tarefas WHERE situacao = 'Aberto'";
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param('s', $_SESSION["usuario"]);
     $stmt->execute();
     
-    $sql_query = $stmt->get_result();
+    $tarefasAbertas = $stmt->get_result();
     
-    if ($sql_query) {
-        $num_linhas_aberta = $sql_query->num_rows;
-        
-
-        while ($row = $sql_query->fetch_assoc()) {
-        }
-    } else {
-        die("Falha na execução da consulta.");
-    }
-
-    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Concluido'";
-    $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param('s', $_SESSION["usuario"]);
-    $stmt->execute();
-    
-    $sql_query = $stmt->get_result();
-    
-    if ($sql_query) {
-        $num_linhas_concluido = $sql_query->num_rows;
-        
-        while ($row = $sql_query->fetch_assoc()) {
-        }
-    } else {
-        die("Falha na execução da consulta.");
-    }
-    
-    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Refazer'";
-    $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param('s', $_SESSION["usuario"]);
-    $stmt->execute();
-    
-    $sql_query = $stmt->get_result();
-    
-    if ($sql_query) {
-        $num_linhas_refazer = $sql_query->num_rows;
-        
-        while ($row = $sql_query->fetch_assoc()) {
-        }
-    } else {
-        die("Falha na execução da consulta.");
-    }
-    $sql_code = "SELECT * FROM tarefas WHERE usuario = ? AND situacao = 'Analise'";
-    $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param('s', $_SESSION["usuario"]);
-    $stmt->execute();
-    
-    $sql_query = $stmt->get_result();
-    
-    if ($sql_query) {
-        $num_linhas_analise = $sql_query->num_rows;
-        
-        while ($row = $sql_query->fetch_assoc()) {
-        }
-    } else {
-        die("Falha na execução da consulta.");
-    }
-    $sql_code = "SELECT * FROM projetos WHERE usuario = ?";
-    $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param('s', $_SESSION["usuario"]);
-    $stmt->execute();
-    
-    $resultadoProjetos = $stmt->get_result();
 
     $stmt->close();
     $mysqli->close();
@@ -187,17 +124,17 @@ if (!isset($_SESSION)) {
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4 shadow">
+                        <div class="bg-secondary text-center rounded p-4 shadow h-100">
                             <div class="d-flex align-items-center justify-content-between mb-0">
                                 <h6 class="mb-3">Adicionar projetos</h6>
 
                             </div>
                             <div class="notificacoes mb-0">
                                 <div class="table-responsive">
-                                    <form action="">
+                                    <form action="cadastrar-tarefa.php" method="post">
                                         <div class="textfield">
                                             <input class="form-control-lg w-100 pt-3 pb-3 mb-3" type="text"
-                                                name="usuario" id="" placeholder="Usuário">
+                                                name="to-usuario" id="" placeholder="Usuário">
                                         </div>
                                         <div class="textfield">
                                             <input class="form-control-lg w-100 pt-3 pb-3 mb-3" type="text"
@@ -210,33 +147,42 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4 shadow">
+                        <div class="bg-secondary text-center rounded p-4 shadow h-100">
                             <div class="d-flex align-items-center justify-content-between mb-0">
-                                <h6 class="mb-3">Gerenciar Tarefas</h6>
+                                <h6 class="mb-0">Gerenciar Tarefas</h6>
                             </div>
                             <table class="table text-start align-middle table-bordered table-hover mb-0"
                                 cellspacing="10px">
 
                                 <tbody>
                                     <?php 
-                            while($dados_eventos = mysqli_fetch_assoc($resultadoProjetos))
+                            while($dados_tarefas = mysqli_fetch_assoc($tarefasAbertas))
                             {
                                 echo "<tr>";
-                                echo "<td>".$dados_eventos['nome_evento']."</td>";
-                                echo "<td>".$dados_eventos['organizador']."</td>";
-                                echo "<td>".$dados_eventos['tema']."</td>";
-                                echo "<td>".$dados_eventos['data']."</td>";
-                                echo "<td>".$dados_eventos['local']."</td>";
+                                echo "<td>".$dados_tarefas['nome']."</td>";
+                                echo "<td>".$dados_tarefas['usuario']."</td>";
+                                echo "<td>".$dados_tarefas['tarefa']."</td>";
+
+                                echo "<td><form action='verificar-tarefas.php' method='post'>
+                                <button type='submit' name='acao' value='Refazer' class='border-0 rounded-3 btn-warning'><i class='bi bi-arrow-counterclockwise'></i></button>
+
+                                <button type='submit' name='acao'name='acao' value='Analise' class='border-0 rounded-3 btn-warning'><i
+                                        class='bi bi-hourglass-split'></i></button>
+                                <button type='submit' name='acao' value='Concluido' class='border-0 rounded-3 btn-warning'><i
+                                        class='bi bi-check'></i></button>
+                                        <input type='hidden' name='tarefa_id' value='".$dados_tarefas['id']."'>
+                            </form></td>";
                                 echo "</tr>";
                             }
                         ?>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button"
+            <button class=" btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button"
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions"><i class="bi bi-chat-left-dots"></i></button>
 
@@ -264,7 +210,8 @@ if (!isset($_SESSION)) {
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js">
+        </script>
         <script src="lib/chart/chart.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/waypoints/waypoints.min.js"></script>
