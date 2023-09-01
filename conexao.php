@@ -1,8 +1,8 @@
 <?php 
 $hostname = "aws.connect.psdb.cloud";
-$username = "ls8zcbvq3ck3pt73vody";
+$username = "v0ifugsj67syy8l7y0i4";
 $dbName = "devaccess";
-$password = "pscale_pw_on33V56iQZxkKywHacveHsx4Drfs32A7n2QA23To4Fl";
+$password = "pscale_pw_ubHuloC9KLUw9uYPcWmPy6TdDUJfCkEcyOEW2vRRlrG";
 
 // Set SSL cert and open connection to the MySQL server
 $mysqli = mysqli_init();
