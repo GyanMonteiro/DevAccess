@@ -18,7 +18,7 @@
         <div class="right-login">
             <div class="card-login">
                 <h1>REGISTRO</h1>
-                <form action="cadastrar.php" method="post">
+                <form action="formularios.php" method="post">
                     <div class="textfield">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" placeholder="Nome Completo">

@@ -85,6 +85,10 @@ if (!isset($_SESSION)) {
                     <a href="main.php" class="nav-item nav-link"><i class="bi bi-house-door-fill me-2"></i>Dashboard</a>
                     <a href="tarefas.php" class="nav-item nav-link active"><i
                             class="bi bi-list-task me-2"></i>Tarefas</a>
+                    <?php if ($_SESSION['tipo'] === 'adm'): ?>
+                    <a href="adm.php" class="nav-item nav-link"><i
+                            class="bi bi-person-circle me-2"></i>Administrador</a>
+                    <?php endif; ?>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
@@ -131,7 +135,7 @@ if (!isset($_SESSION)) {
                             </div>
                             <div class="notificacoes mb-0">
                                 <div class="table-responsive">
-                                    <form action="cadastrar-tarefa.php" method="post">
+                                    <form action="formularios.php" method="post">
                                         <div class="textfield">
                                             <input class="form-control-lg w-100 pt-3 pb-3 mb-3" type="text"
                                                 name="to-usuario" id="" placeholder="Usuário">
@@ -163,12 +167,12 @@ if (!isset($_SESSION)) {
                                 echo "<td>".$dados_tarefas['usuario']."</td>";
                                 echo "<td>".$dados_tarefas['tarefa']."</td>";
 
-                                echo "<td><form action='verificar-tarefas.php' method='post'>
-                                <button type='submit' name='acao' value='Refazer' class='border-0 rounded-3 btn-warning'><i class='bi bi-arrow-counterclockwise'></i></button>
+                                echo "<td><form action='formularios.php' method='post'>
+                                <button type='submit' name='modificar_valor' value='Refazer' class='border-0 rounded-3 btn-warning'><i class='bi bi-arrow-counterclockwise'></i></button>
 
-                                <button type='submit' name='acao'name='acao' value='Analise' class='border-0 rounded-3 btn-warning'><i
+                                <button type='submit' name='modificar_valor' value='Analise' class='border-0 rounded-3 btn-warning'><i
                                         class='bi bi-hourglass-split'></i></button>
-                                <button type='submit' name='acao' value='Concluido' class='border-0 rounded-3 btn-warning'><i
+                                <button type='submit' name='modificar_valor' value='Concluido' class='border-0 rounded-3 btn-warning'><i
                                         class='bi bi-check'></i></button>
                                         <input type='hidden' name='tarefa_id' value='".$dados_tarefas['id']."'>
                             </form></td>";
@@ -192,7 +196,7 @@ if (!isset($_SESSION)) {
                     <h2 class="text-center">Menssagem</h2>
                 </div>
                 <div class="offcanvas-body">
-                    <form class="enviar-menssagem h-75" action="enviar-menssagem.php" method="post">
+                    <form class="enviar-menssagem h-75" action="formularios.php" method="post">
                         <div class="textfield">
                             <input class="form-control-lg w-100 mb-3" type="text" placeholder="Usuário"
                                 name="to-usuario" id="usuario">

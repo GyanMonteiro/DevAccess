@@ -261,7 +261,7 @@ if (!isset($_SESSION)) {
                                         echo "<h7 class='m-0'>".$dados_notificacoes['remetente']."</h7>";
                                         echo "<span class='ms-4'>".$dados_notificacoes['menssagem']."</span>";
                                         echo "</div>";
-                                        echo "<form class='w-25 m-auto d-flex justify-content-end' action='excluir-notificacao.php' method='post'>";
+                                        echo "<form class='w-25 m-auto d-flex justify-content-end' action='formularios.php' method='post'>";
                                         echo "<input type='hidden' name='notificacao_id' value='".$dados_notificacoes['id']."'>";
                                         echo "<button class='border-0 bg-primary rounded' type='submit' name='enviar'><i class='bi bi-trash-fill'></i></button>";
                                         echo "</form>";
@@ -287,8 +287,8 @@ if (!isset($_SESSION)) {
                                 echo "<td>".$dados_eventos['nome_evento']."</td>";
                                 echo "<td>".$dados_eventos['organizador']."</td>";
                                 echo "<td>".$dados_eventos['tema']."</td>";
-                                echo "<td>".$dados_eventos['data']."</td>";
-                                echo "<td>".$dados_eventos['local']."</td>";
+                                echo "<td>".$dados_eventos['data_evento']."</td>";
+                                echo "<td>".$dados_eventos['local_evento']."</td>";
                                 echo "</tr>";
                             }
                         ?>
@@ -314,7 +314,7 @@ if (!isset($_SESSION)) {
                                 <tr>
                                     <th>Projeto</th>
                                     <th>Clientes</th>
-                                    <th>Status</th>
+                                    <th>Andamento</th>
                                     <th>Data de entrega</th>
                                 </tr>
                             </thead>
@@ -325,7 +325,7 @@ if (!isset($_SESSION)) {
                                 echo "<tr>";
                                 echo "<td>".$dados_projetos['nome_projeto']."</td>";
                                 echo "<td>".$dados_projetos['nome_empresa']."</td>";
-                                echo "<td>".$dados_projetos['status']."</td>";
+                                echo "<td>".$dados_projetos['andamento']."</td>";
                                 echo "<td>".$dados_projetos['data_conclusao']."</td>";
                                 echo "</tr>";
                             }
@@ -334,28 +334,28 @@ if (!isset($_SESSION)) {
                         </table>
                     </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button"
-                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                    aria-controls="offcanvasWithBothOptions"><i class="bi bi-chat-left-dots"></i></button>
+            </div>
+            <button class="btn btn-lg btn-primary btn-lg-square back-to-top btn-shadow" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions"><i class="bi bi-chat-left-dots"></i></button>
 
-                <div class="offcanvas offcanvas-end bg-secondary rounded-start" data-bs-scroll="true" tabindex="-1"
-                    id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" id="menu">
-                    <div class="offcanvas-header">
-                        <h2 class="text-center">Menssagem</h2>
-                    </div>
-                    <div class="offcanvas-body">
-                        <form class="enviar-menssagem h-75" action="enviar-menssagem.php" method="post">
-                            <div class="textfield">
-                                <input class="form-control-lg w-100 mb-3" type="text" placeholder="Usuário"
-                                    name="to-usuario" id="usuario">
-                            </div>
-                            <div class="textfield">
-                                <input class="form-control-lg w-100 pt-5 pb-5 mb-3" type="text" placeholder="Menssagem"
-                                    name="menssagem" id="usuario">
-                            </div>
-                            <input class="w-100 mt-3 p-3 btn-submit" type="submit" value="ENVIAR MENSSAGEM">
-                        </form>
-                    </div>
+            <div class="offcanvas offcanvas-end bg-secondary rounded-start" data-bs-scroll="true" tabindex="-1"
+                id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" id="menu">
+                <div class="offcanvas-header">
+                    <h2 class="text-center">Menssagem</h2>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="enviar-menssagem h-75" action="formularios.php" method="post">
+                        <div class="textfield">
+                            <input class="form-control-lg w-100 mb-3" type="text" placeholder="Usuário"
+                                name="to-usuario" id="usuario">
+                        </div>
+                        <div class="textfield">
+                            <input class="form-control-lg w-100 pt-5 pb-5 mb-3" type="text" placeholder="Menssagem"
+                                name="menssagem" id="usuario">
+                        </div>
+                        <input class="w-100 mt-3 p-3 btn-submit" type="submit" value="ENVIAR MENSSAGEM">
+                    </form>
                 </div>
             </div>
             <!-- Recent Sales End -->
