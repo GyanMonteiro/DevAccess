@@ -29,8 +29,8 @@ if ($row['total'] > 0) {
     header('Location: cadastro.php?email_existe=true');
     exit;
 }
-
-$sql = "INSERT INTO usuarios (nome, usuario, profissao, email, senha) VALUES ('$nome', '$usuario', '$profissao', '$email', '$hash')";
+$tipo = 'usuario';
+$sql = "INSERT INTO usuarios (nome, usuario, profissao, email, senha, tipo) VALUES ('$nome', '$usuario', '$profissao', '$email', '$hash', 'usuario')";
 
 if ($mysqli->query($sql) === TRUE) {
     $_SESSION['status_cadastro'] = true;

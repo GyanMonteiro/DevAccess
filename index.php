@@ -33,6 +33,7 @@
                     $_SESSION['nome'] = $usuarios['nome'];
                     $_SESSION['usuario'] = $usuarios['usuario'];
                     $_SESSION['profissao'] = $usuarios['profissao'];
+                    $_SESSION['tipo'] = $usuarios['tipo'];
                     $_SESSION['ativa'] = TRUE;
 
                     header("Location: main.php");
@@ -49,6 +50,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,6 +58,7 @@
     <title>DevAccess - Login</title>
     <link href="img/icon.png" rel="icon">
 </head>
+
 <body>
     <div class="main-div">
         <div class="left-login">
@@ -68,20 +71,21 @@
                 <form action="" method="post">
                     <span class="mensagem"><?php echo $mensagem;?></span>
                     <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" id="usuario" placeholder="Usuário">
-                    <span class="mensagem"><?php echo $mensagemUsuario;?></span>
-                </div>
-                <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Senha">
-                    <span class="mensagem"><?php echo $mensagemSenha;?></span>
-                </div>
-                <input type="submit" value="login" class="btn">
-                <input type="submit" value="registre-se" class="btn regist" formaction="cadastro.php">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" name="usuario" id="usuario" placeholder="Usuário">
+                        <span class="mensagem"><?php echo $mensagemUsuario;?></span>
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha" placeholder="Senha">
+                        <span class="mensagem"><?php echo $mensagemSenha;?></span>
+                    </div>
+                    <input type="submit" value="login" class="btn">
+                    <input type="submit" value="registre-se" class="btn regist" formaction="cadastro.php">
                 </form>
             </div>
         </div>
     </div>
 </body>
+
 </html>

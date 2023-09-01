@@ -161,6 +161,10 @@ if (!isset($_SESSION)) {
                     <a href="index.html" class="nav-item nav-link active"><i
                             class="bi bi-house-door-fill me-2"></i>Dashboard</a>
                     <a href="tarefas.php" class="nav-item nav-link"><i class="bi bi-list-task me-2"></i>Tarefas</a>
+                    <?php if ($_SESSION['tipo'] === 'adm'): ?>
+                    <a href="adm.php" class="nav-item nav-link"><i
+                            class="bi bi-person-circle me-2"></i>Administrador</a>
+                    <?php endif; ?>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-gear-fill me-2"></i>Configurações</a>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-file-earmark-fill me-2"></i>Documentação</a>
                     <a href="#" class="nav-item nav-link"><i class="bi bi-bar-chart-fill me-2"></i>Estatisticas</a>
