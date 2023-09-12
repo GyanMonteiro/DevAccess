@@ -1,8 +1,8 @@
 <?php 
 $hostname = "aws.connect.psdb.cloud";
-$username = "zr524b6bgvxu5esfokwx";
+$username = "6vqo3ph1ufasbnxt6wuy";
 $dbName = "devaccess";
-$password = "pscale_pw_ud1nfxINbmIwiS9wzQRebSYGvQvmkBjrFc2gRpwJqoc";
+$password = "pscale_pw_CJtJnpVL9CXhWC88561fvHrpRtvozisxSCgL19Io7Oo";
 
 
 $mysqli = mysqli_init();
